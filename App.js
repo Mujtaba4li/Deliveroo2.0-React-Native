@@ -4,9 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Komal is my Love?</Text>
+      <Text>
+        Oh ustadd its working...
+      </Text>
+      
+  
       <StatusBar style="auto" />
     </View>
+
+
   );
 }
 
