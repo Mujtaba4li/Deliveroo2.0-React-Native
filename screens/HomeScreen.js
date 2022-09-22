@@ -1,8 +1,8 @@
 import { View, Text, SafeAreaView, Image } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import {SparklesIcon} from "react-native-heroicons/outline";
-import { FaBeer } from 'react-icons/fa';
+import { AntDesign,FontAwesome5 } from '@expo/vector-icons'; 
+
 export default function HomeScreen() {
   const navigation = useNavigation();
 
@@ -23,10 +23,11 @@ export default function HomeScreen() {
         />
         <View>
           <Text className="text-slate-500 text-xs">Deliver Now!</Text>
-          <Text className="text-lg font-bold">Current Location</Text>
-          <SparklesIcon/>
+          <Text className="text-lg font-bold">Current Location <AntDesign name="caretdown" size={15} color="#00CCBB" /></Text>
         </View>
-          
+        <View className='absolute right-5'>
+        <FontAwesome5 name="user" size={32} color="#00CCBB" />
+        </View>
       </View>
     </SafeAreaView>
   );
