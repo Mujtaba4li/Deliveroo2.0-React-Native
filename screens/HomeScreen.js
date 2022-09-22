@@ -13,7 +13,7 @@ export default function HomeScreen() {
     });
   }, []);
   return (
-    <SafeAreaView>
+    <SafeAreaView className='bg-white pt-10'>
       <View className="flex-row space-x-3 space-y-0 align-middle ml-2">
         <Image
           source={{
