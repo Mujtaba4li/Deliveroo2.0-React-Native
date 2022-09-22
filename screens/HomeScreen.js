@@ -7,6 +7,7 @@ import {
   MaterialCommunityIcons,
   Octicons,
 } from "@expo/vector-icons";
+import Categories from "../components/Categories";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -37,18 +38,24 @@ export default function HomeScreen() {
           <FontAwesome5 name="user" size={32} color="#00CCBB" />
         </View>
       </View>
-      <View className='flex-row'>
-        <View className='bg-gray-200 flex-row flex-1 p-2 m-2 space-x-2'>
+      <View className="flex-row">
+        <View className="bg-gray-200 flex-row flex-1 p-2 m-2 space-x-2">
           <Octicons name="search" size={24} color="grey" />
-          <TextInput placeholder="Resturants and Refereshment"  keyboardType="default"/>
+          <TextInput
+            placeholder="Resturants and Refereshment"
+            keyboardType="default"
+          />
         </View>
-        <View className='m-4'>
+        <View className="m-4">
           <MaterialCommunityIcons
             name="tune-vertical"
             size={24}
             color="#00CCBB"
           />
         </View>
+      </View>
+      <View>
+       <Categories/>
       </View>
     </SafeAreaView>
   );
