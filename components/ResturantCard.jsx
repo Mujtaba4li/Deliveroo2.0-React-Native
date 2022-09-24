@@ -15,23 +15,23 @@ const ResturantCard = ({
   lat,
 }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity className=' bg-white space-x-1 ml-2 rounded pb-2'>
       <Image
         source={{
           uri: imgURL,
         }}
         className="h-36 w-56 rounded"
       />
-      <Text>{title}</Text>
-      <View>
+      <Text className='font-bold text-xl pt-2'>{title}</Text>
+      <View className='flex-row space-x-2'>
         <Text>
-          <AntDesign name="star" size={24} color="black" />
+          <AntDesign name="star" size={15} color="#ff9529" opa/>
         </Text>
         <Text>{rating}</Text>
       </View>
-      <View>
+      <View className='flex-row space-x-1 pr-2'>
         <Text>
-          <Entypo name="location-pin" size={24} color="black" />
+          <Entypo name="location-pin" size={19} color="green" />
         </Text>
         <Text>Nearby • {address}</Text>
       </View>
