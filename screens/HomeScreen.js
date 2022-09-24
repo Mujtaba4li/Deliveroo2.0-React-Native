@@ -8,6 +8,7 @@ import {
   Octicons,
 } from "@expo/vector-icons";
 import Categories from "../components/Categories";
+import FeatureRow from "../components/FeatureRow";
 function handleLcoation(){
   alert("Working..");
 }
@@ -34,7 +35,7 @@ export default function HomeScreen() {
           <Text className="text-slate-500 text-xs">Deliver Now!</Text>
           <Text className="text-lg font-bold">
             Current Location{" "}
-            <AntDesign name="caretdown" size={15} color="#00CCBB" onClick={handleLcoation} />
+            <AntDesign name="down" size={15} color="#00CCBB" onClick={handleLcoation} />
           </Text>
         </View>
         <View className="absolute right-5">
@@ -59,6 +60,18 @@ export default function HomeScreen() {
       </View>
       <ScrollView>
        <Categories/>
+       <FeatureRow 
+       title='Features'
+       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto suscipit facilis?'
+       />
+       <FeatureRow 
+       title='Tasty Discounts'
+       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto suscipit facilis?'
+       />
+       <FeatureRow 
+       title='Offers Near You!'
+       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto suscipit facilis?'
+       />
       </ScrollView>
     </SafeAreaView>
   );
