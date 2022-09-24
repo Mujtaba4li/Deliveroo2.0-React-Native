@@ -8,6 +8,9 @@ import {
   Octicons,
 } from "@expo/vector-icons";
 import Categories from "../components/Categories";
+function handleLcoation(){
+  alert("Working..");
+}
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -31,7 +34,7 @@ export default function HomeScreen() {
           <Text className="text-slate-500 text-xs">Deliver Now!</Text>
           <Text className="text-lg font-bold">
             Current Location{" "}
-            <AntDesign name="caretdown" size={15} color="#00CCBB" />
+            <AntDesign name="caretdown" size={15} color="#00CCBB" onClick={handleLcoation} />
           </Text>
         </View>
         <View className="absolute right-5">
