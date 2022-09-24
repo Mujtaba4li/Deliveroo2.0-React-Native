@@ -1,6 +1,6 @@
-import { View, Text, SafeAreaView, Image, TextInput } from "react-native";
+import { View, Text, SafeAreaView, Image, TextInput,ScrollView } from "react-native";
 import React, { useLayoutEffect } from "react";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import {
   AntDesign,
   FontAwesome5,
@@ -57,9 +57,9 @@ export default function HomeScreen() {
           />
         </View>
       </View>
-      <View>
+      <ScrollView>
        <Categories/>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
