@@ -9,6 +9,19 @@ export default {
       type: "string",
       validation: (Rule) => Rule.required().max(20),
     },
+
+    {
+      name: "address",
+      title: "Address",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "shortDescription",
+      title: "Short Description",
+      type: "blockContent",
+      validation: (Rule) => Rule.required().max(200),
+    },
     {
       name: "image",
       title: "Image",
@@ -25,16 +38,25 @@ export default {
       type: "number",
     },
     {
-      name: "shortDescription",
-      title: "Short Description",
-      type: "blockContent",
-      validation: (Rule) => Rule.required().max(200),
+      name: "rating",
+      title: "Rating",
+      type: "number",
+      validation: (Rule) =>
+        Rule.required().min(1).max(5).error("Please enter 1-5"),
     },
     {
-      name: "address",
-      title: "Address",
-      type: "string",
+      name: "type",
+      title: "Category",
+      type: "reference",
       validation: (Rule) => Rule.required(),
+      to: [{ type: "category" }],
+    },
+    {
+      name: "dishes",
+      title: "Dishes",
+      type: "array",
+      validation: (Rule) => Rule.required(),
+      of: [{ type: "reference", to: [{ type: "dish" }] }],
     },
   ],
 };
