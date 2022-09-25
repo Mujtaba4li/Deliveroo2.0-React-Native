@@ -1,5 +1,5 @@
 export default {
-  name: "resturnat",
+  name: "resturant",
   title: "Resturants",
   type: "document",
   fields: [
@@ -19,7 +19,7 @@ export default {
     {
       name: "shortDescription",
       title: "Short Description",
-      type: "blockContent",
+      type: "string",
       validation: (Rule) => Rule.required().max(200),
     },
     {

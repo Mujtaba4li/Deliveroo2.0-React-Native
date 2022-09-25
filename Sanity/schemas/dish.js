@@ -12,7 +12,7 @@ export default {
   
       {
         name: "price",
-        title: "Price of Dish in $",
+        title: "Price of Dish in pkr",
         type: "number",
       },
       {
@@ -24,7 +24,7 @@ export default {
       {
         name: "shortDescription",
         title: "Short Description",
-        type: "blockContent",
+        type: "string",
         validation: (Rule) => Rule.required().max(200),
       },
     ],

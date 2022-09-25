@@ -5,13 +5,13 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
-import blockContent from "./blockContent";
 import category from "./category";
 import dish from "./dish";
 import resturant from "./resturant";
+import featured from "./featured";
 
 export default createSchema({
   // We name our schema
   name: "default",
-  types: schemaTypes.concat([resturant, dish, category, blockContent]),
+  types: schemaTypes.concat([resturant, dish, category,featured]),
 });
