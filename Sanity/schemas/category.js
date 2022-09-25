@@ -1,13 +1,13 @@
 export default {
-  name: 'category',
-  title: 'Menu Category',
-  type: 'document',
+  name: "category",
+  title: "Menu Category",
+  type: "document",
   fields: [
     {
-      name: 'name',
-      title: 'Category Name',
-      type: 'string',
-      validation:rule=>rule.required(),
+      name: "name",
+      title: "Category Name",
+      type: "string",
+      validation: (rule) => rule.required(),
     },
     {
       name: "image",
@@ -15,4 +15,4 @@ export default {
       type: "image",
     },
   ],
-}
+};
