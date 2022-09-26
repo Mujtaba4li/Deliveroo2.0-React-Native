@@ -1,7 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
-import { client } from "../lib/client";
+import { client, urlFor } from "../lib/client";
 
 const Categories = () => {
   const [categoriesData, setcategoriesData] = useState([]);
@@ -31,7 +31,7 @@ const Categories = () => {
         <CategoryCard
         key={cat._id}
           title={cat.title}
-          imgURL={cat.image}
+          imgURL={urlFor(cat.image).width(200).url()}
           Title={cat.name}
         />
       ))}

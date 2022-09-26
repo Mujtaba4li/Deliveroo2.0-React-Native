@@ -7,7 +7,7 @@ const CategoryCard = ({imgURL,Title}) => {
     <TouchableOpacity className='relative m-1'>
         <Image
         source={{
-            uri:urlFor(imgURL).url()
+            uri:imgURL
         }}
         className="h-20 w-20 rounded opacity-9"
         />
