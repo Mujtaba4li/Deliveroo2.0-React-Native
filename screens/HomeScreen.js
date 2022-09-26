@@ -1,5 +1,12 @@
-import { View, Text, SafeAreaView, Image, TextInput,ScrollView } from "react-native";
-import React, { useLayoutEffect } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  TextInput,
+  ScrollView,
+} from "react-native";
+import React, { useLayoutEffect, useState,useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import {
@@ -11,29 +18,38 @@ import {
 import Categories from "../components/Categories";
 import FeatureRow from "../components/FeatureRow";
 import { client } from "../lib/client";
-function handleLcoation(){
+function handleLcoation() {
   alert("Working..");
 }
 export default function HomeScreen() {
   const navigation = useNavigation();
-// const [featureCategory, setfeatureCategory] = useState([])
+const [featuredCategories, setfeaturedCategories] = useState([])
+
+  useEffect(() => {
+    const query = `*[ _type == "featured" ]{
+      ...,
+        resturants[]->{
+          ..., 
+          dishes[]->{
+            ...
+          }
+        }
+      }`;
+    client.fetch(query).then((data) => {
+      setfeaturedCategories(data);
+      // console.log(setfeaturedCategories); 
+    });
+  }, []);
+
+
+  console.log(featuredCategories);
   useLayoutEffect(() => {
     navigation.setOptions({
       //   headerTitle: "Mujtaba",
       headerShown: false,
     });
   }, []);
-  // useEffect(() => {
-  //   const query = `*[ _type == "resturant" ]{
-  //     ...
-        
-  //     }`;
-  //  client.fetch(query).then((data)=>{
-  //   setfeatureCategory(data);
-  //  })
-   
-  // }, [])
-  
+
   return (
     <SafeAreaView className="bg-white pt-10">
       <View className="flex-row space-x-3 space-y-0 align-middle ml-2">
@@ -47,7 +63,12 @@ export default function HomeScreen() {
           <Text className="text-slate-500 text-xs">Deliver Now!</Text>
           <Text className="text-lg font-bold">
             Current Location{" "}
-            <AntDesign name="down" size={15} color="#00CCBB" onClick={handleLcoation} />
+            <AntDesign
+              name="down"
+              size={15}
+              color="#00CCBB"
+              onClick={handleLcoation}
+            />
           </Text>
         </View>
         <View className="absolute right-5">
@@ -71,19 +92,18 @@ export default function HomeScreen() {
         </View>
       </View>
       <ScrollView>
-       <Categories/>
-       <FeatureRow 
-       title='Features'
-       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto suscipit facilis?'
-       />
-       <FeatureRow 
-       title='Tasty Discounts'
-       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto suscipit facilis?'
-       />
-       <FeatureRow 
-       title='Offers Near You!'
-       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto suscipit facilis?'
-       />
+        <Categories />
+
+        {/* Features  */}
+       {featuredCategories?.map(category => (
+            <FeatureRow
+            key={category.id}
+            
+            title={category.featureName}
+            description={category.shortDescription}
+          />
+       ))}
+       
       </ScrollView>
     </SafeAreaView>
   );
