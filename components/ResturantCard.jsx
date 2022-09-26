@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import React from "react";
+import { urlFor } from "../lib/client";
 
 const ResturantCard = ({
   id,

@@ -13,13 +13,15 @@ const FeatureRow = ({ id, title, description }) => {
           resturants[]->{
             ..., 
             dishes[]->{
-              ...
+              ...,
+              type[]->
             }
           }
         }[0]`,{id}
       )
       .then((data) => {
-        setresturants(data);
+        // console.log();
+        setresturants(data.resturants);
       });
   }, []);
   console.log(resturants);
@@ -39,23 +41,21 @@ const FeatureRow = ({ id, title, description }) => {
         }}
         className="bg-gray-100 pt-3 pb-3 rounded-lg"
       >
-        {/* {resturants?.map((resturant) => (
+        {resturants?.map((resturant) => (
           <ResturantCard
             key={resturant._id}
             id={resturant._id}
-            imgURL={resturant.url}
-            title={category.featureName}
-            description={category.shortDescription}
-            title={resturant.title}
-            rating={4.5}
+            imgURL="https://mujtaba-ali.vercel.app/static/media/header-img.1c0118c3bc802a747396.png"
+            title={resturant.resturantName}
+            rating={resturant.rating}
             gendre="Japenese"
-            short_description="This is short description "
-            address="Islamabad, Pakistan"
-            dishes={[]}
-            long={20}
-            lat={0}
+            short_description={resturant.shortDescription}
+            address={resturants.address}
+            dishes={resturant.dishes}
+            long={resturant.lon}
+            lat={resturant.lat}
           />
-        ))} */}
+        ))}
       </ScrollView>
     </View>
   );
