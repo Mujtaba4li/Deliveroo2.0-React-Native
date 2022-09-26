@@ -9,9 +9,9 @@ const CategoryCard = ({imgURL,Title}) => {
         source={{
             uri:urlFor(imgURL).url()
         }}
-        className="h-20 w-20 rounded opacity-95"
+        className="h-20 w-20 rounded opacity-9"
         />
-      <Text className='absolute bottom-1 text-white font-bold left-4'>{Title}</Text>
+      <Text className='absolute bottom-0 text-emerald-700 bg-white pl-1 pr-1 font-extrabold '>{Title}</Text>
 
     </TouchableOpacity>
   )
