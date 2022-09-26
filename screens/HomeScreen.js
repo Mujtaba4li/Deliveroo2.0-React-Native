@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, Image, TextInput,ScrollView } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+
 import {
   AntDesign,
   FontAwesome5,
@@ -9,19 +10,30 @@ import {
 } from "@expo/vector-icons";
 import Categories from "../components/Categories";
 import FeatureRow from "../components/FeatureRow";
+import { client } from "../lib/client";
 function handleLcoation(){
   alert("Working..");
 }
-
 export default function HomeScreen() {
   const navigation = useNavigation();
-
+// const [featureCategory, setfeatureCategory] = useState([])
   useLayoutEffect(() => {
     navigation.setOptions({
       //   headerTitle: "Mujtaba",
       headerShown: false,
     });
   }, []);
+  // useEffect(() => {
+  //   const query = `*[ _type == "resturant" ]{
+  //     ...
+        
+  //     }`;
+  //  client.fetch(query).then((data)=>{
+  //   setfeatureCategory(data);
+  //  })
+   
+  // }, [])
+  
   return (
     <SafeAreaView className="bg-white pt-10">
       <View className="flex-row space-x-3 space-y-0 align-middle ml-2">
