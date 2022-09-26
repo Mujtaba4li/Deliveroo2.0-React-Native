@@ -24,7 +24,7 @@ const FeatureRow = ({ id, title, description }) => {
         setresturants(data.resturants);
       });
   }, []);
-  console.log(resturants);
+  // console.log(resturants);
   return (
     <View className="p-4">
       <View className="flex-row items-center justify-between">

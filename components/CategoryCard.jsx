@@ -1,12 +1,13 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { urlFor } from '../lib/client'
 
 const CategoryCard = ({imgURL,Title}) => {
   return (
     <TouchableOpacity className='relative m-1'>
         <Image
         source={{
-            uri:imgURL
+            uri:urlFor(imgURL).url()
         }}
         className="h-20 w-20 rounded opacity-95"
         />

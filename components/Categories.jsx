@@ -1,8 +1,22 @@
 import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
+import { client } from "../lib/client";
 
 const Categories = () => {
+  const [categoriesData, setcategoriesData] = useState([]);
+  useEffect(() => {
+    const query = `*[ _type=="category"]{
+      ...,
+        
+        }
+      `;
+    client.fetch(query).then((res) => {
+      setcategoriesData(res);
+    });
+  }, []);
+
+  console.log(categoriesData);
   return (
     <ScrollView
       horizontal
@@ -12,46 +26,15 @@ const Categories = () => {
       }}
       showsHorizontalScrollIndicator={false}
     >
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
-      <CategoryCard
-        imgURL="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        Title="Title 1"
-      />
+      {categoriesData?.map((cat)=>(
+        
+        <CategoryCard
+          imgURL={cat.image}
+          Title={cat.name}
+        />
+      ))}
+
+   
     </ScrollView>
   );
 };
