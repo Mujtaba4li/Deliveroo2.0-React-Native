@@ -45,7 +45,7 @@ const FeatureRow = ({ id, title, description }) => {
           <ResturantCard
             key={resturant._id}
             id={resturant._id}
-            imgURL="https://mujtaba-ali.vercel.app/static/media/header-img.1c0118c3bc802a747396.png"
+            imgURL={resturant.image}
             title={resturant.resturantName}
             rating={resturant.rating}
             gendre="Japenese"
