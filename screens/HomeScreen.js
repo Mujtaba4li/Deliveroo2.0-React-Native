@@ -6,7 +6,7 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-import React, { useLayoutEffect, useState,useEffect } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import {
@@ -23,7 +23,7 @@ function handleLcoation() {
 }
 export default function HomeScreen() {
   const navigation = useNavigation();
-const [featuredCategories, setfeaturedCategories] = useState([])
+  const [featuredCategories, setfeaturedCategories] = useState([]);
 
   useEffect(() => {
     const query = `*[ _type == "featured" ]{
@@ -37,12 +37,10 @@ const [featuredCategories, setfeaturedCategories] = useState([])
       }`;
     client.fetch(query).then((data) => {
       setfeaturedCategories(data);
-      // console.log(setfeaturedCategories); 
     });
   }, []);
 
-
-  console.log(featuredCategories);
+  // console.log(featuredCategories);
   useLayoutEffect(() => {
     navigation.setOptions({
       //   headerTitle: "Mujtaba",
@@ -95,15 +93,14 @@ const [featuredCategories, setfeaturedCategories] = useState([])
         <Categories />
 
         {/* Features  */}
-       {featuredCategories?.map(category => (
-            <FeatureRow
-            key={category.id}
-            
+        {featuredCategories?.map((category) => (
+          <FeatureRow
+            key={category._id}
+            id={category._id}
             title={category.featureName}
             description={category.shortDescription}
           />
-       ))}
-       
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
