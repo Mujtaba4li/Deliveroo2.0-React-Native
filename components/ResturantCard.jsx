@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import React from "react";
 import { urlFor } from "../lib/client";
+import { useNavigation } from "@react-navigation/native";
 
 const ResturantCard = ({
   id,
@@ -15,15 +16,31 @@ const ResturantCard = ({
   long,
   lat,
 }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity className=" bg-white space-x-1 ml-2 rounded pb-2">
+    <TouchableOpacity
+      onPress={() => {navigation.navigate("Resturant",{
+        id,
+        imgURL,
+        title,
+        rating,
+        gendre,
+        short_description,
+        address,
+        dishes,
+        long,
+        lat,
+      });
+    }}
+      className=" bg-white space-x-1 ml-2 rounded pb-2"
+    >
       <Image
         source={{
-          uri:urlFor(imgURL).url(),
+          uri: urlFor(imgURL).url(),
         }}
         className="h-36 w-56 rounded"
       />
-      <View className='p-1'>
+      <View className="p-1">
         <Text className="font-bold text-xl pt-1">{title}</Text>
         <View className="flex-row space-x-1">
           <Text>
