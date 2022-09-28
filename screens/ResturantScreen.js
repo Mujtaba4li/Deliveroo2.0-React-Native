@@ -4,21 +4,21 @@ import { useRoute } from '@react-navigation/native'
 
 const ResturantScreen = () => {
     // route.params.title  
-  const {params:{
-    id,
-    imgURL,
-    title,
-    rating,
-    gendre,
-    short_description,
-    address,
-    dishes,
-    long,
-    lat,
-  }}=useRoute();
+  // const {params:{
+  //   id,
+  //   imgURL,
+  //   title,
+  //   rating,
+  //   gendre,
+  //   short_description,
+  //   address,
+  //   dishes,
+  //   long,
+  //   lat,
+  // }}=useRoute();
   return (
     <View>
-      <Text>{title}</Text>
+      <Text>Hello</Text>
     </View>
   )
 }
