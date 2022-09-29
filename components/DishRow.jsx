@@ -2,15 +2,25 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { urlFor } from "../lib/client";
 import { AntDesign } from "@expo/vector-icons";
-import { useDispatch,useSelector } from "react-redux";
-import { addToBasket, selectBasketItems, selectBasketItemsWithId } from "../features/basketSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToBasket,
+  removeFromBasket,
+  selectBasketItems,
+  selectBasketItemsWithId,
+} from "../features/basketSlice";
 
-const DishRow = ({ id,name, price, description, imgURL }) => {
+const DishRow = ({ id, name, price, description, imgURL }) => {
   const [isPressed, setisPressed] = useState(false);
-  const items=useSelector((state)=>selectBasketItemsWithId(state,id));
+  const items = useSelector((state) => selectBasketItemsWithId(state, id));
+  // console.log(items);
   const dispatch = useDispatch();
   const addItemToBasket = () => {
-    dispatch(addToBasket({ id,name, price, description, imgURL}));
+    dispatch(addToBasket({ id, name, price, description, imgURL }));
+  };
+  const removeItemFromBasket = () => {
+    if (!items.length > 0) return;
+    dispatch(removeFromBasket({ id }));
   };
   return (
     <View>
@@ -38,12 +48,19 @@ const DishRow = ({ id,name, price, description, imgURL }) => {
       </TouchableOpacity>
       {isPressed && (
         <View className="flex-row p-3 space-x-4 text-center align-middle items-center">
-          <TouchableOpacity className="rounded-full p-1 bg-teal-500">
+          <TouchableOpacity
+            className="rounded-full p-1 bg-teal-500"
+            onPress={removeItemFromBasket}
+          >
             <AntDesign name="minus" size={20} color="white" />
           </TouchableOpacity>
-    
-          <Text className="align-middle">{items.length}</Text>
-          <TouchableOpacity className="rounded-full p-1 bg-teal-500" onPress={addItemToBasket}>
+
+          <Text className="align-middle">{items.length} </Text>
+
+          <TouchableOpacity
+            className="rounded-full p-1 bg-teal-500"
+            onPress={addItemToBasket}
+          >
             <AntDesign name="plus" size={20} color="white" />
           </TouchableOpacity>
         </View>
