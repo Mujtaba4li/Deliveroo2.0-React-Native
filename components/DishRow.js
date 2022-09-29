@@ -1,13 +1,16 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React,{useState} from "react";
 import { urlFor } from "../lib/client";
 import { AntDesign } from "@expo/vector-icons";
 
 const DishRow = ({ name, price, description, imgURL }) => {
+  const [isPressed, setisPressed] = useState(false);
   return (
     <View>
-   
-      <TouchableOpacity className="flex-row space-x-2 border-y-2 border-gray-200">
+      <TouchableOpacity
+        onPress={() => setisPressed(!isPressed)}
+        className={`flex-row space-x-2 border-y-2 border-gray-200 ${isPressed && 'border-b-0'}`}
+      >
         <View className="flex-1 pt-4 p-3">
           <Text className="font-bold text-lg">{name}</Text>
           <Text className="text-sm text-gray-500">{description}</Text>
@@ -24,15 +27,17 @@ const DishRow = ({ name, price, description, imgURL }) => {
           />
         </View>
       </TouchableOpacity>
-      <View className="flex-row p-3 space-x-4 text-center align-middle bg-red-800">
-        <TouchableOpacity className="rounded-full p-1 bg-teal-500">
-          <AntDesign name="minus" size={20} color="white" />
-        </TouchableOpacity>
-        <Text className='align-middle top-2'>0</Text>
-        <TouchableOpacity className="rounded-full p-1 bg-teal-500">
-          <AntDesign name="plus" size={20} color="white" />
-        </TouchableOpacity>
-      </View>
+      {isPressed && (
+        <View className="flex-row p-3 space-x-4 text-center align-middle items-center">
+          <TouchableOpacity className="rounded-full p-1 bg-teal-500">
+            <AntDesign name="minus" size={20} color="white" />
+          </TouchableOpacity>
+          <Text className="align-middle">0</Text>
+          <TouchableOpacity className="rounded-full p-1 bg-teal-500">
+            <AntDesign name="plus" size={20} color="white" />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
