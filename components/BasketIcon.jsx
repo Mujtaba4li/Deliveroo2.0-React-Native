@@ -8,10 +8,10 @@ const BasketIcon = () => {
     const items=useSelector(selectBasketItems)
     const totalBasket=useSelector(selectBasketTotal)
   return (
-    <TouchableOpacity className='absolute bottom-10 z-50 bg-[#00ccbb] w-full rounded-lg h-16 flex-row justify-center items-center'>
-      <Text className='text-red-900'>{items.length}</Text>
-      <Text>Order Now</Text>
-      <Text>{totalBasket}</Text>
+    <TouchableOpacity className='absolute bottom-10 z-50 bg-[#00ccbb] w-full rounded-lg h-16 flex-row space-x-5 items-center m-2'>
+      <Text className='font-bold text-xl ml-5 text-white'>{items.length}</Text>
+      <Text className='text-white font-extrabold text-2xl'>Order Now</Text>
+      <Text className='text-white font-bold text-xl'>Pkr{totalBasket}</Text>
     </TouchableOpacity>
   )
 }
