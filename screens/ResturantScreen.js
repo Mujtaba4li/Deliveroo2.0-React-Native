@@ -10,6 +10,7 @@ import React, { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
 import { urlFor } from "../lib/client";
+import DishRow from "../components/DishRow";
 
 const ResturantScreen = () => {
   // route.params.title
@@ -36,7 +37,7 @@ const ResturantScreen = () => {
     },
   } = useRoute();
   return (
-    <ScrollView className='bg-slate-200'>
+    <ScrollView className="bg-slate-200">
       <View className="relative">
         <Image
           source={{
@@ -51,8 +52,8 @@ const ResturantScreen = () => {
           <Ionicons name="arrow-back" size={25} color="#00CCBB" />
         </TouchableOpacity>
       </View>
-      <View className='bg-white pt-4 p-3'>
-        <Text className='font-extrabold text-3xl'>{title}</Text>
+      <View className="bg-white pt-4 p-3">
+        <Text className="font-extrabold text-3xl">{title}</Text>
         <View className="flex-row mt-1">
           <View className="flex-row space-x-1">
             <Text>
@@ -69,10 +70,27 @@ const ResturantScreen = () => {
             <Text className="text-gray-500 text-xs">{address}</Text>
           </View>
         </View>
-      <Text className='text-base pt-2 text-justify'>{short_description}</Text>
-     
+        <Text className="text-base pt-2 text-justify">{short_description}</Text>
       </View>
 
+      <View>
+        <Text className="font-bold text-lg pl-2">Menu</Text>
+      </View>
+      <View className="bg-white">
+        {dishes?.map((dish) =>  (
+          
+          <DishRow
+            key={dish._id}
+           name={dish.dishName}
+           price={dish.price}
+           description={dish.shortDescription}  
+           imgURL={dish.image}        
+          />
+          
+        ))}
+
+
+      </View>
     </ScrollView>
   );
 };
