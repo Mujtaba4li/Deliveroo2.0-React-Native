@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToBasket,
   removeFromBasket,
-  selectBasketItems,
+  // selectBasketItems,
   selectBasketItemsWithId,
 } from "../features/basketSlice";
 
@@ -15,6 +15,7 @@ const DishRow = ({ id, name, price, description, imgURL }) => {
   const items = useSelector((state) => selectBasketItemsWithId(state, id));
   // console.log(items);
   const dispatch = useDispatch();
+
   const addItemToBasket = () => {
     dispatch(addToBasket({ id, name, price, description, imgURL }));
   };
@@ -49,8 +50,11 @@ const DishRow = ({ id, name, price, description, imgURL }) => {
       {isPressed && (
         <View className="flex-row p-3 space-x-4 text-center align-middle items-center">
           <TouchableOpacity
-            className="rounded-full p-1 bg-teal-500"
+            className={`rounded-full p-1 ${
+              items.length > 0 ? "bg-teal-500" : "bg-gray-400"
+            } `}
             onPress={removeItemFromBasket}
+            disabled={!items.length > 0}
           >
             <AntDesign name="minus" size={20} color="white" />
           </TouchableOpacity>

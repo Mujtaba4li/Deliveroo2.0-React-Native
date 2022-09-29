@@ -11,6 +11,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
 import { urlFor } from "../lib/client";
 import DishRow from "../components/DishRow";
+import BasketIcon from "../components/BasketIcon";
 
 const ResturantScreen = () => {
   // route.params.title
@@ -37,6 +38,8 @@ const ResturantScreen = () => {
     },
   } = useRoute();
   return (
+    <>
+    <BasketIcon/>
     <ScrollView className="bg-slate-200">
       <View className="relative">
         <Image
@@ -93,6 +96,7 @@ const ResturantScreen = () => {
 
       </View>
     </ScrollView>
+    </>
   );
 };
 
