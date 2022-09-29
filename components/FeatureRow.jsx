@@ -48,7 +48,7 @@ const FeatureRow = ({ id, title, description }) => {
             imgURL={resturant.image}
             title={resturant.resturantName}
             rating={resturant.rating}
-            gendre="Japenese"
+            gendre=""
             short_description={resturant.shortDescription}
             address={resturant.address}
             dishes={resturant.dishes}
