@@ -9,8 +9,10 @@ import {
 import React, { useMemo, useState } from "react";
 import { Entypo } from "@expo/vector-icons";
 import { selectResturant } from "../features/resturantSlice";
-import { removeFromBasket, selectBasketItems } from "../features/basketSlice";
+import { removeFromBasket, selectBasketItems, selectBasketTotal } from "../features/basketSlice";
 import { useSelector } from "react-redux";
+import CurrencyFormat from "react-currency-formatter";
+
 import Currency from "react-currency-formatter";
 import { useNavigation } from "@react-navigation/native";
 import { urlFor } from "../lib/client";
@@ -18,6 +20,7 @@ import { useDispatch } from "react-redux";
 const BasketScreen = () => {
   const navigation = useNavigation();
   const returants = useSelector(selectResturant);
+  const totalBasket = useSelector(selectBasketTotal);
   const items = useSelector(selectBasketItems);
   const [GroupItemInBasket, setGroupItemInBasket] = useState([]);
   // useMemo(() => first, [second])
@@ -65,10 +68,12 @@ const BasketScreen = () => {
         </View>
 
         {/* ========== */}
-        <ScrollView className='mt-3 divide-y divide-gray-200'>
+        <ScrollView className="mt-3 divide-y divide-gray-200">
           {Object.entries(GroupItemInBasket).map(([key, items]) => (
-            <View key={key} className="flex-row items-center bg-white py-2 px-5 space-x-3 ">
-             
+            <View
+              key={key}
+              className="flex-row items-center bg-white py-2 px-5 space-x-3 "
+            >
               <Text>{items.length}x</Text>
 
               <Image
@@ -77,7 +82,7 @@ const BasketScreen = () => {
                 }}
                 className="h-10 w-10 rounded-full "
               />
-              <Text className='flex-1 font-semibold'>{items[0]?.name}</Text>
+              <Text className="flex-1 font-semibold">{items[0]?.name}</Text>
               <Text>
                 <Currency quantity={items[0]?.price} currency="PKR" />
               </Text>
@@ -92,6 +97,30 @@ const BasketScreen = () => {
             </View>
           ))}
         </ScrollView>
+        <View className='bg-white'>
+          <View className='flex-row items-center m-2'>
+            <Text className='flex-1 text-gray-400'>Subtotal</Text>
+            <Text className='text-gray-400'><CurrencyFormat quantity={totalBasket} currency="PKR" /></Text>
+          </View>
+          <View className='flex-row items-center m-2'>
+            <Text className='flex-1 text-gray-400'>Delivery Fee</Text>
+            <Text className='text-gray-400'><CurrencyFormat quantity="200" currency="PKR" /></Text>
+            </View>
+            <View className='flex-row items-center m-2'>
+            <Text className='flex-1 text-black font-semibold text-lg '>Order total</Text>
+            <Text className='text-black font-extrabold text-lg'><CurrencyFormat quantity={totalBasket+200} currency="Pkr" /></Text>
+          </View>
+          <View className="z-50 w-full">
+            <TouchableOpacity
+              onPress={() => navigation.navigate("PreparingOrder")}
+              className="mx-3 space-x-1 p-4 items-center flex-row rounded-lg  bg-[#00ccbb]"
+            >
+              <Text className="flex-1 text-xl font-extrabold text-white text-center pl-4">
+                Place Order
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
