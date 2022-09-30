@@ -55,7 +55,7 @@ export default function HomeScreen() {
           source={{
             uri: "https://mujtaba-ali.vercel.app/static/media/header-img.1c0118c3bc802a747396.png",
           }}
-          className="h-8 w-8 rounded-full bg-emerald-500 p-5"
+          className="h-8 w-8 rounded-full bg-[#00ccbb] p-5"
         />
         <View>
           <Text className="text-slate-500 text-xs">Deliver Now!</Text>
