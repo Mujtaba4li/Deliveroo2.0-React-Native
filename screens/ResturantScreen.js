@@ -100,7 +100,7 @@ const ResturantScreen = () => {
         <View>
           <Text className="font-bold text-lg pl-2">Menu</Text>
         </View>
-        <View className="bg-white">
+        <View className="bg-white mb-28">
           {dishes?.map((dish) => (
             <DishRow
               key={dish._id}

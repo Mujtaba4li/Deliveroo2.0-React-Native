@@ -1,4 +1,10 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -62,10 +68,30 @@ const DeliveryScreen = () => {
           }}
           title={resturants.title}
           description={resturants.short_description}
-          identifier='origin'
+          identifier="origin"
           pinColor="#00ccbb"
         ></Marker>
       </MapView>
+      <SafeAreaView className="bg-white">
+        <View className="h-10 mt-5 p-x-4">
+          <View className="flex-row space-x-3 space-y-0 align-middle ml-2">
+            <Image
+              source={{
+                uri: "https://mujtaba-ali.vercel.app/static/media/header-img.1c0118c3bc802a747396.png",
+              }}
+              className="h-8 w-8 rounded-full bg-[#00ccbb] p-4"
+            />
+            <View>
+              <Text className="text-lg font-bold">Mujtaba Ali</Text>
+            </View>
+            <View className="absolute right-5">
+              <TouchableOpacity onPress={()=>alert('Call on: +923046511650')}>
+                <Text  className='text-[#00ccbb] font-bold'>Contact</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </SafeAreaView>
     </View>
   );
 };

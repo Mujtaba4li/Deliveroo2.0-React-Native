@@ -89,7 +89,7 @@ export default function HomeScreen() {
           />
         </View>
       </View>
-      <ScrollView>
+      <ScrollView className=' mb-20'>
         <Categories />
 
         {/* Features  */}
