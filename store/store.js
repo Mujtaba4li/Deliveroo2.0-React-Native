@@ -11,11 +11,13 @@
 // export default store;
 // ======================================================
 import { configureStore } from '@reduxjs/toolkit'
+import  resturantReducer  from '../features/resturantSlice'
 import basketReducer from './../features/basketSlice'
 export const store = configureStore({
  
   reducer: {
     basket: basketReducer,
+    resturant:resturantReducer,
   },
 })
 
