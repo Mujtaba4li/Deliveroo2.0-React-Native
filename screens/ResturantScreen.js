@@ -13,7 +13,7 @@ import { urlFor } from "../lib/client";
 import DishRow from "../components/DishRow";
 import BasketIcon from "../components/BasketIcon";
 import { useDispatch, useSelector } from "react-redux";
-import {setResturant} from "../features/resturantSlice"
+import { setResturant } from "../features/resturantSlice";
 const ResturantScreen = () => {
   // route.params.title
   const {
@@ -33,18 +33,20 @@ const ResturantScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setResturant({
-    id,
-      imgURL,
-      title,
-      rating,
-      gendre,
-      short_description,
-      address,
-      dishes,
-      long,
-      lat,
-    }));
+    dispatch(
+      setResturant({
+        id,
+        imgURL,
+        title,
+        rating,
+        gendre,
+        short_description,
+        address,
+        dishes,
+        long,
+        lat,
+      })
+    );
   }, [dispatch]);
 
   useLayoutEffect(() => {
