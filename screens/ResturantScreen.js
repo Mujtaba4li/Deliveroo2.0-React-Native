@@ -16,18 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {setResturant} from "../features/resturantSlice"
 const ResturantScreen = () => {
   // route.params.title
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setRes);
-  }, [dispatch]);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      //   headerTitle: "Mujtaba",
-      headerShown: false,
-    });
-  }, []);
   const {
     params: {
       id,
@@ -42,6 +30,30 @@ const ResturantScreen = () => {
       lat,
     },
   } = useRoute();
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setResturant({
+    id,
+      imgURL,
+      title,
+      rating,
+      gendre,
+      short_description,
+      address,
+      dishes,
+      long,
+      lat,
+    }));
+  }, [dispatch]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      //   headerTitle: "Mujtaba",
+      headerShown: false,
+    });
+  }, []);
+
   return (
     <>
       <BasketIcon />
