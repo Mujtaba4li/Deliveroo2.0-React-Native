@@ -104,7 +104,7 @@ const BasketScreen = () => {
           </View>
           <View className='flex-row items-center m-2'>
             <Text className='flex-1 text-gray-400'>Delivery Fee</Text>
-            <Text className='text-gray-400'><CurrencyFormat quantity="200" currency="PKR" /></Text>
+            <Text className='text-gray-400'><CurrencyFormat quantity={200} currency="PKR" /></Text>
             </View>
             <View className='flex-row items-center m-2'>
             <Text className='flex-1 text-black font-semibold text-lg '>Order total</Text>
