@@ -65,7 +65,7 @@ const BasketScreen = () => {
         </View>
 
         {/* ========== */}
-        <ScrollView className='mt-3'>
+        <ScrollView className='mt-3 divide-y divide-gray-200'>
           {Object.entries(GroupItemInBasket).map(([key, items]) => (
             <View key={key} className="flex-row items-center bg-white py-2 px-5 space-x-3 ">
              
