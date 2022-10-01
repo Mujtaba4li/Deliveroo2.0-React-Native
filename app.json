@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "deliveroo",
-    "slug": "deliveroo",
+    "name": "PakDeliveroo",
+    "slug": "PakDeliveroo",
+    "description": "We deliver your takeouts or essential groceries from the best-rated local partners straight to your door.",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/cart.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/food-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
