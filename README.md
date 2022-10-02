@@ -1,6 +1,6 @@
 Pak deliveroo is cross-platform(Android & IOS) Mobile application which is created in React Native.
 Other things that are in used
-- React
+- React Native
 - Sanity
 - Redux
 - Tailwindcss
